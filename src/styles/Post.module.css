@@ -1,0 +1,49 @@
+.Post {
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.Post figure,
+h5 {
+  margin: 0 0;
+}
+
+.Heart {
+  color: #bc3219;
+}
+
+.Heart:hover {
+  color: #4c4c4c;
+}
+
+.HeartOutline:hover {
+  color: #bc3219;
+}
+
+.Icon {
+  animation: float 4s ease-in-out infinite;
+  color: #a4a4a4;
+}
+
+.Like {
+  animation-delay: 1s;
+}
+
+.Comment {
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
