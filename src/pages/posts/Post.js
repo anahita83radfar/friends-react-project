@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const Post = (props) => {
   const {
@@ -22,10 +23,43 @@ const Post = (props) => {
     image,
     updated_at,
     postPage,
+    setPosts,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+
+  const handleLike = async () => {
+    try {
+      const { data } = await axiosRes.post("/likes/", { post: id });
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUnlike = async () => {
+    try {
+      const { data } = await axiosRes.delete(`/likes/${like_id}`, { post: id });
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count - 1, like_id: data.id }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Card className={styles.Post}>
@@ -53,15 +87,19 @@ const Post = (props) => {
               placement="top"
               overlay={<Tooltip>You can't like your own post!</Tooltip>}
             >
-              <i className={`fas fa-heart ${styles.Icon} ${styles.Like}` }/>
+              <i className={`fas fa-heart ${styles.Icon} ${styles.Like}`} />
             </OverlayTrigger>
           ) : like_id ? (
-            <span onClick={() => {}}>
-              <i className={`fas fa-heart ${styles.Heart} ${styles.Icon} ${styles.Like}`} />
+            <span onClick={handleUnlike}>
+              <i
+                className={`fas fa-heart ${styles.Heart} ${styles.Icon} ${styles.Like}`}
+              />
             </span>
           ) : currentUser ? (
-            <span onClick={() => {}}>
-              <i className={`fas fa-heart ${styles.HeartOutline} ${styles.Icon} ${styles.Like}`} />
+            <span onClick={handleLike}>
+              <i
+                className={`fas fa-heart ${styles.HeartOutline} ${styles.Icon} ${styles.Like}`}
+              />
             </span>
           ) : (
             <OverlayTrigger
