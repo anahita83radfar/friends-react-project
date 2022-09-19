@@ -15,25 +15,28 @@ const DropDown = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
-export const MoreDropDown = ({handleEdit, handleDelete}) => {
+export const MoreDropDown = ({ handleEdit, handleDelete }) => {
   return (
     <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={DropDown} />
 
-      <Dropdown.Menu className="text-center">
+      <Dropdown.Menu
+        className="text-center"
+        popperConfig={{ strategy: "fixed" }}
+      >
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={handleEdit}
           aria-label="edit"
         >
-          <i className="fas fa-pen" />
+          <i className={`fas fa-pen ${styles.Icon} ${styles.Edit}`} />
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={handleDelete}
           aria-label="delete"
         >
-          <i className="fas fa-trash" />
+          <i className={`fas fa-trash ${styles.Icon} ${styles.Delete}`} />
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

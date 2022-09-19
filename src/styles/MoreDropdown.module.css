@@ -10,3 +10,26 @@
     z-index: 99;
   }
   
+  .Icon {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .Edit {
+    animation-delay: 1s;
+  }
+  
+  .Delete {
+    animation-delay: 2s;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
