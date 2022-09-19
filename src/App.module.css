@@ -1,7 +1,16 @@
 .App {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(0.25turn, rgb(63, 135, 166, 0.1), rgb(235, 248, 225, 0.1), rgb(246, 157, 60, 0.1));
+  background: linear-gradient(
+    0.25turn,
+    rgb(63, 135, 166, 0.1),
+    rgb(235, 248, 225, 0.1),
+    rgb(246, 157, 60, 0.1)
+  );
   min-height: 100vh;
+}
+
+.Main {
+  padding-top: 100px;
 }
 
 * {
