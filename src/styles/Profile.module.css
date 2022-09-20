@@ -1,0 +1,7 @@
+.WordBreak {
+    word-break: break-all;
+  }
+  
+  .Text::first-letter {
+    font-weight: 700;
+  }
