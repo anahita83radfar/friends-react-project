@@ -5,12 +5,16 @@ import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/Profile.module.css";
 import Avatar from "../../components/Avatar";
 import Button from "react-bootstrap/Button";
+import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
-function Profile({ profile, mobile, imageSize = 55 }) {
+function Profile(props) {
+  const { profile, mobile, imageSize = 55 } = props;
   const { id, following_id, image, owner } = profile;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+
+  const { handleFollow } = useSetProfileData();
 
   return (
     <div
@@ -38,7 +42,7 @@ function Profile({ profile, mobile, imageSize = 55 }) {
           ) : (
             <Button
               className={`${btnStyles.Button} ${btnStyles.Bright}`}
-              onClick={() => {}}
+              onClick={() => handleFollow(profile)}
             >
               follow
             </Button>
