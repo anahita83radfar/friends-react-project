@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
+// The code taken from the Code Institute moments project
 const DropDown = React.forwardRef(({ onClick }, ref) => (
   <i
     className="fas fa-caret-down"

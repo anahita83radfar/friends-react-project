@@ -3,6 +3,7 @@ import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { followHelper, unfollowHelper } from "../utils/utils";
 import { useCurrentUser } from "./CurrentUserContext";
 
+// The code taken from the Code Institute moments project
 export const ProfileDataContext = createContext();
 export const SetProfileDataContext = createContext();
 
@@ -38,7 +39,7 @@ export const ProfileDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -61,7 +62,7 @@ export const ProfileDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -76,7 +77,7 @@ export const ProfileDataProvider = ({ children }) => {
           popularProfiles: data,
         }));
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     handleMount();

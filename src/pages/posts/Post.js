@@ -10,6 +10,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropDown } from "../../components/MoreDropdown";
 
+// The code taken from the Code Institute moments project
 const Post = (props) => {
   const {
     id,
@@ -43,7 +44,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -59,7 +60,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -72,7 +73,7 @@ const Post = (props) => {
       await axiosRes.delete(`/posts/${id}`);
       history.goBack();
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

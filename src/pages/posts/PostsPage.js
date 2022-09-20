@@ -16,13 +16,17 @@ import Form from "react-bootstrap/Form";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
+// The code taken from the Code Institute moments project
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
   const [loaded, setLoaded] = useState(false);
   const { pathname } = useLocation();
 
   const [query, setQuery] = useState("");
+
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -31,7 +35,7 @@ function PostsPage({ message, filter = "" }) {
         setPosts(data);
         setLoaded(true);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
 
@@ -42,7 +46,7 @@ function PostsPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, pathname, query]);
+  }, [filter, pathname, query, currentUser]);
 
   return (
     <Row className="h-100">

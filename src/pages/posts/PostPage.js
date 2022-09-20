@@ -17,6 +17,7 @@ import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
+// The code taken from the Code Institute moments project
 function PostPage() {
   const { id } = useParams();
   const [post, setPost] = useState({ results: [] });
@@ -35,7 +36,7 @@ function PostPage() {
         setPost({ results: [post] });
         setComments(comments);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
 

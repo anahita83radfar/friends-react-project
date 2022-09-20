@@ -8,6 +8,7 @@ import { MoreDropDown } from "../../components/MoreDropdown";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import CommentEditForm from "./CommentEditForm";
 
+// The code taken from the Code Institute moments project
 function Comment(props) {
   const {
     profile_id,

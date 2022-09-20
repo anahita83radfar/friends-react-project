@@ -18,13 +18,15 @@ import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
-import { Button, Image } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Post from "../posts/Post";
 import NoResults from "../../assets/no-results.png";
 import { fetchMoreData } from "../../utils/utils";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
+// The code taken from the Code Institute moments project
 function ProfilePage() {
   const [profilePosts, setProfilePosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -50,7 +52,7 @@ function ProfilePage() {
         setProfilePosts(profilePosts);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchData();
