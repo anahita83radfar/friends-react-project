@@ -5,7 +5,7 @@ import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-function PopularProfiles() {
+function PopularProfiles({ mobile }) {
   const [profileData, setProfileData] = useState({
     popularProfiles: { results: [] },
     pageProfile: { results: [] },
@@ -37,11 +37,25 @@ function PopularProfiles() {
   return (
     <>
       {loaded ? (
-        <Container className={appStyles.Content}>
+        <Container
+          className={`${appStyles.Content} ${
+            mobile && "d-lg-none text-center mb-3"
+          }`}
+        >
           <p>Popular profiles</p>
-          {popularProfiles.results.map((profile) => (
-            <p key={profile.id}>{profile.owner}</p>
-          ))}
+          {mobile ? (
+            <div className="d-flex justify-content-around">
+              {popularProfiles.results.slice(0, 3).map((profile) => (
+                <p key={profile.id}>{profile.owner}</p>
+              ))}
+            </div>
+          ) : (
+            <div>
+              {popularProfiles.results.map((profile) => (
+                <p key={profile.id}>{profile.owner}</p>
+              ))}
+            </div>
+          )}
         </Container>
       ) : (
         <Asset spinner />
