@@ -110,7 +110,7 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-          <NavLink
+            <NavLink
               exact
               className={styles.NavLink}
               activeClassName={styles.Active}

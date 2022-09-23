@@ -112,7 +112,6 @@ const SignUpForm = () => {
                 {message}
               </Alert>
             ))}
-
           </Form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
